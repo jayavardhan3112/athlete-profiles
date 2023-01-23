@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "3495e1ae-54a8-4563-a4c1-37ccdb1fda75",
+		"name": "Athletes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10890347"
+	},
+	"item": [
+		{
+			"name": "New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uid\": 9,\n    \"fullName\": \"Jay\",\n    \"dob\": \"1997-12-31\",\n    \"sport\": [\"Cricket\"],\n    \"gender\": \"Male\",\n    \"team\": \"India\",\n    \"interests\": \"fasdf\",\n    \"location\": \"India\",\n    \"description\": \"Hey\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/add_user"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uid\": 8,\n    \"fullName\": \"Jay\",\n    \"dob\": \"1997-12-31\",\n    \"sport\": [\"Cricket\", \"Tennis\"],\n    \"gender\": \"Male\",\n    \"team\": \"India\",\n    \"interests\": \"fasdf\",\n    \"location\": \"India\",\n    \"description\": \"Hey\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/edit_user"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8000/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "GetOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8000/users/9"
+			},
+			"response": []
+		}
+	]
+}
