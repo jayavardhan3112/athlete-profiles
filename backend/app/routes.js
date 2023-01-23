@@ -12,13 +12,11 @@ module.exports = (app) => {
     app.route('/users')
         .get((req, res) => {
             Player.find({}, (err, records) => {
-                let data = {};
+                let data = [];
 
-                records.forEach((record) => {
+                data = records.map((record) => {
                     record = record.toObject();
-                    // delete record["_id"];
-                    // delete record["__v"];
-                    data[record.uid] = record.fullName;
+                    return({id: record.uid, name: record.fullName})
                 })
                 res.send(data);
             });

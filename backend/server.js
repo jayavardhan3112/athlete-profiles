@@ -1,15 +1,21 @@
  'use strict';
 
  const fs = require('fs');
- const express = require('express');
- const app = express();
+ var express = require('express')
+ var cors = require('cors')
+ var app = express()
  const routes = require('./app/routes');
  const bodyParser = require('body-parser');
  const methodOverride = require('method-override');
+
+ var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  } 
  require('dotenv').config({
      path: './.env'
  })
- const port = process.env.PORT || 8000;
+ const port = 8000;
  const mongoose = require('mongoose');
 
  mongoose.connect("mongodb://localhost:27017/test");
@@ -23,6 +29,7 @@
      console.log('Database Connected');
  })
 
+ app.use(cors(corsOptions))
  app.use(bodyParser.json()); // parse application/json
  app.use(bodyParser.json({
      type: 'application/vnd.api+json'
@@ -30,7 +37,6 @@
  app.use(bodyParser.urlencoded({
      extended: true
  })); // parse application/x-www-form-urlencoded
-
  app.use(methodOverride('X-HTTP-Method-Override'));
  app.use('/public', express.static(process.cwd() + '/public'));
 
