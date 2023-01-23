@@ -2,11 +2,11 @@
 const Player = require('../config/schema.js');
 
 
-module.exports = (req, res, uid) => {
+module.exports = (req, res) => {
     console.log(req.body);
     let object = req.body;
     let query = {
-        'uid': uid
+        'uid': object.uid
     };
 
     Player.findOneAndUpdate(query, object, {
@@ -17,7 +17,7 @@ module.exports = (req, res, uid) => {
             updated: false
         });
         let obj = {
-            uid: uid,
+            uid: object.uid,
             updated: true
         };
         res.send(obj);

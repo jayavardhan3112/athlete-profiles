@@ -9,7 +9,7 @@ module.exports = (app) => {
             res.sendFile(process.cwd() + '/public/index.html');
         })
 
-    app.route('/list')
+    app.route('/users')
         .get((req, res) => {
             Player.find({}, (err, records) => {
                 let data = {};
@@ -24,7 +24,7 @@ module.exports = (app) => {
             });
         })
 
-    app.route('/list/:uid')
+    app.route('/users/:uid')
         .get((req, res) => {
             console.log(req.params)
             Player.find({
@@ -42,7 +42,7 @@ module.exports = (app) => {
             })
         })
 
-    app.route('/new')
+    app.route('/add_user')
         .post((req, res) => {
             let object = req.body;
             if (object.uid && object.dob && object.sport && object.team && object.gender && object.interests && object.location && object.description && object.fullName) {
@@ -89,9 +89,9 @@ module.exports = (app) => {
             }
         })
 
-    app.route('/new/:uid')
+    app.route('/edit_user')
         .put((req, res) => {
-            updateRecord(req, res, req.params.uid);
+            updateRecord(req, res);
         })
 
     // Respond not found to all the wrong routes
